@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FormEvent, useState } from "react"
 import { toast, ToastContainer } from "react-toastify"
 
 
@@ -9,8 +9,8 @@ function Contact() {
 
 
 
-    const handleSubmit = async(e:React.ChangeEvent<HTMLInputElement>)=>{
-        e.preventDefault()
+    const handleSubmit = async(event:FormEvent<HTMLElement>)=>{
+        event.preventDefault()
         try {
             if(!username ||! email?.includes("@") ||!message){
                 return toast.error("Veuillez renseigner  tous  les champs ou  entrez une addresse  email  correcte ! ")
@@ -28,7 +28,7 @@ function Contact() {
         
         <div>
 
-            <form action="#" method="post">
+            <form action="#">
 <div className="flex flex-col justify-center  items-center">
           <div className="bg-white p-8 rounded-2xl w-full max-w-md shadow-xl">
             <h2 className="text-2xl font-bold text-red-700 mb-4 text-center">
