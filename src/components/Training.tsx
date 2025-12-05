@@ -85,7 +85,7 @@ function Training() {
       const receiptNumber = `RCPT-${Date.now()}`;
 
       const response = await axios.post(
-        `${API_URL}/api/receipt`,
+        `${API_URL}/api/receipt/`,
         { ...form, amount: 10000, receiptNumber },
         { headers: token ? { Authorization: `Bearer ${token}` } : {} }
       );
