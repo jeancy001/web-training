@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import NavBar from "../components/NavBar";
 import FooterPage from "../components/FooterPage";
 import Training from "../components/Training";
+import Contact from "../sreens/Contact";
 
 
 
@@ -18,7 +19,7 @@ function AppRoute() {
       <Routes>
         <Route path="/" element ={<HomePage />}/>
         <Route path ="/training" element ={<Training/>}/>
-    
+        <Route path="/contact" element ={<Contact/>}/>
       
       
       </Routes>

@@ -26,7 +26,7 @@ const NavBar: React.FC = () => {
               <a href="#" className="flex items-center gap-2 hover:text-blue-600">
                 <Info className="text-blue-600" size={18} /> About
               </a>
-              <a href="#" className="flex items-center gap-2 hover:text-blue-600">
+              <a href="/contact" className="flex items-center gap-2 hover:text-blue-600">
                 <Mail className="text-blue-600" size={18} /> Contact
               </a>
             </div>
@@ -57,7 +57,7 @@ const NavBar: React.FC = () => {
             <a href="#" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600">
               <Info className="text-blue-600" size={18} /> About
             </a>
-            <a href="#" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600">
+            <a href="/contact" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600">
               <Mail className="text-blue-600" size={18} /> Contact
             </a>
           </div>
