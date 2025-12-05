@@ -40,6 +40,7 @@ function Training() {
   const [loginForm, setLoginForm] = useState({ username: "", password: "" });
   const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loading , setLoading] =useState<boolean>(false)
 
   /* -------------------- FETCH RECEIPTS -------------------- */
   const fetchReceipts = async () => {
@@ -78,7 +79,9 @@ function Training() {
 
   /* -------------------- CREATE RECEIPT -------------------- */
   const handleSubmit = async () => {
+        setLoading(true)
     try {
+  
       const receiptNumber = `RCPT-${Date.now()}`;
 
       const response = await axios.post(
@@ -86,13 +89,16 @@ function Training() {
         { ...form, amount: 10000, receiptNumber },
         { headers: token ? { Authorization: `Bearer ${token}` } : {} }
       );
-
+   
       setReceiptId(response.data._id);
       fetchReceipts();
       toast.success(`Reçu créé avec succès : ${receiptNumber}`);
+          setLoading(false)
     } catch (error) {
       console.error(error);
+     
       toast.error("Erreur lors de la création du reçu.");
+       setLoading(false)
     }
   };
 
@@ -222,7 +228,7 @@ function Training() {
             onClick={handleSubmit}
             className="bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 flex-1"
           >
-            ➕ Enregistrer le Reçu
+            {loading? "Enregistrement...":"➕ Enregistrer le Reçu"}
           </button>
 
           {receiptId && (
@@ -230,7 +236,7 @@ function Training() {
               onClick={() => printPDF(receiptId)}
               className="bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 flex-1"
             >
-              📄 Télécharger le Ticket
+              {loading?"Pression..." : "📄 Télécharger le Ticket"}
             </button>
           )}
 
@@ -270,7 +276,7 @@ function Training() {
               onClick={handleAdminLogin}
               className="bg-red-600 text-white py-3 rounded-lg font-semibold w-full hover:bg-red-700"
             >
-              🔓 Se Connecter
+              {loading? "Connexion..." :"🔓 Se Connecter"}
             </button>
           </div>
         </div>
